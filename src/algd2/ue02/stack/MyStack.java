@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 import algd2.ue02.linearlist.MySinglyLinkedList;
 import algd2.ue02.linearlist.SinglyLinkedList;
 
-public class MyStack<E> implements Stack {
+public class MyStack<E> implements Stack<E> {
     private SinglyLinkedList<E> stackList = new MySinglyLinkedList<E>();
     
     @Override
@@ -20,14 +20,13 @@ public class MyStack<E> implements Stack {
 
     @Override
     // TODO: why do i have to use Object instead of E here?
-    public void push(Object data) {
+    public void push(E data) {
         if(data == null)
         {
             throw new IllegalArgumentException();
         }
         
-        E castedData = (E) data;
-        this.stackList.insertFirst(castedData);        
+        this.stackList.insertFirst(data);        
     }
 
     @Override
