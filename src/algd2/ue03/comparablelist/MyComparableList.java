@@ -192,7 +192,7 @@ public class MyComparableList<E extends Comparable<E>> implements ComparableList
 
         @Override
         public int nextIndex() {
-            return this.index;
+            return this.index;            
         }
 
         @Override

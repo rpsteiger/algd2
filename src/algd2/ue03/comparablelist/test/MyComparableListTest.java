@@ -476,4 +476,49 @@ public class MyComparableListTest {
         assertEquals(expected, actual);        
     }
     
+    @Test
+    /**
+     * Create a list with 3 items. Iterate through it and add 1 element each.
+     */
+    public void testListIterator_addNormal()
+    {
+        this.classUnderTest.addHead(100);
+        this.classUnderTest.addHead(200);
+        this.classUnderTest.addHead(300);
+        
+        ListIterator<Integer> addIterator = this.classUnderTest.listIterator();
+        while(addIterator.hasNext())
+        {
+            addIterator.add(addIterator.next().intValue()/2);
+        }
+        // list should be like this [300,150,200,100,100,50]
+        
+        assertEquals(6, this.classUnderTest.size());
+        
+        ListIterator<Integer> confirmIterator = this.classUnderTest.listIterator(0);
+        assertEquals(300, confirmIterator.next().intValue());
+        assertEquals(150, confirmIterator.next().intValue());
+        assertEquals(200, confirmIterator.next().intValue());
+        assertEquals(100, confirmIterator.next().intValue());
+        assertEquals(100, confirmIterator.next().intValue());
+        assertEquals(50, confirmIterator.next().intValue());
+    }
+    
+    @Test
+    /**
+     * Create an empty list. Add 3 elements using iterator.add().
+     */
+    public void testListIterator_addOnEmptyList()
+    {
+        ListIterator<Integer> addIterator = this.classUnderTest.listIterator();
+        addIterator.add(300);
+        addIterator.add(200);
+        addIterator.add(100);
+        // list should be like this [300,200,100]
+        
+        ListIterator<Integer> confirmIterator = this.classUnderTest.listIterator(0);
+        assertEquals(300, confirmIterator.next().intValue());
+        assertEquals(200, confirmIterator.next().intValue());
+        assertEquals(100, confirmIterator.next().intValue());      
+    }
 }
