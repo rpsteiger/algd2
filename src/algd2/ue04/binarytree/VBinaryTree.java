@@ -34,7 +34,6 @@ public class VBinaryTree{
     return false;
   }
 
-
   public boolean insert(int key){
     SearchResult r = find(key);
     if (r.node != null)          // key exists already
