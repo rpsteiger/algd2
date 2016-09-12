@@ -1,13 +1,17 @@
 package algd2.ue04.binarytree;
 
 public class MyBinaryTree implements BinaryTree {
-    private Node root;
+    protected Node root;
     
     public static class Node
     {
         public int data;
         public Node L;
         public Node R;
+        
+        // TODO: this aint pretty. need to ask mr. veitschegger for a better solution.
+        public Node U;
+        public int bal;
         
         Node(int data)        
         {
